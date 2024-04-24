@@ -1,1 +1,10 @@
-node_modules
+node_modules# Ignore node_modules directory
+node_modules/
+
+# Optional: Ignore npm's lock file (if using npm)
+npm-debug.log
+package-lock.json
+
+# Optional: Ignore yarn's lock file (if using yarn)
+yarn-error.log
+yarn.lock
