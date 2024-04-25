@@ -32,7 +32,7 @@ export class UserController extends BaseController implements IUsersController {
   }
 
   register(req: Request, res: Response, next: NextFunction) {
-    this.ok(res, "register");
-    // next(new HTTPError(401, "Registration error"));
+    // this.ok(res, "register");
+    next(new HTTPError(401, "Registration error"));
   }
 }
