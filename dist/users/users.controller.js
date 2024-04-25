@@ -14,6 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserController = void 0;
 const base_controller_1 = require("../common/base.controller");
+const http_error_class_1 = require("../errors/http-error.class");
 const inversify_1 = require("inversify");
 const types_1 = require("../types");
 require("reflect-metadata");
@@ -38,7 +39,7 @@ let UserController = class UserController extends base_controller_1.BaseControll
         this.ok(res, "login");
     }
     register(req, res, next) {
-        this.ok(res, "register");
+        next(new http_error_class_1.HTTPError(401, "Registration error"));
     }
 };
 exports.UserController = UserController;
