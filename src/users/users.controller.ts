@@ -10,10 +10,14 @@ import { IUsersController } from "./users.controller.interface";
 import { UserLoginDto } from "./dto/user-login.dto";
 import { UserRegisterDto } from "./dto/user-register.dto";
 import { User } from "./user.entity";
+import { UserService } from "./users.service";
 
 @injectable()
 export class UserController extends BaseController implements IUsersController {
-  constructor(@inject(TYPES.ILogger) private loggerService: ILogger) {
+  constructor(
+    @inject(TYPES.ILogger) private loggerService: ILogger,
+    @inject(TYPES.UserService) private userService: UserService
+  ) {
     super(loggerService);
 
     this.bindRoutes([
@@ -40,10 +44,12 @@ export class UserController extends BaseController implements IUsersController {
     res: Response,
     next: NextFunction
   ): Promise<void> {
-    const newUser = new User(body.email, body.name);
-    await newUser.setPassword(body.password);
+    const result = await this.userService.createUser(body);
+    if(!result) {
+      return next(new HTTPError(422, 'already registered user'))
+    }
     console.log(body);
-    this.ok(res, newUser);
+    this.ok(res, {email: result.email});
     // next(new HTTPError(401, "Registration error"));
   }
 }

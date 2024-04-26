@@ -8,15 +8,15 @@ export class User {
     private readonly _name: string
   ) {}
 
-  getEmail(): string {
+  get email(): string {
     return this._email;
   }
 
-  getName(): string {
+  get name(): string {
     return this._name;
   }
 
-  getPassword(): string {
+  get password(): string {
     return this._password;
   }
 
