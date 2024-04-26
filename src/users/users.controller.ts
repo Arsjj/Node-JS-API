@@ -51,7 +51,7 @@ export class UserController extends BaseController implements IUsersController {
       return next(new HTTPError(422, "already registered user"));
     }
     console.log(body);
-    this.ok(res, { email: result.email });
+    this.ok(res, { email: result.email, id: result.id });
     // next(new HTTPError(401, "Registration error"));
   }
 }
