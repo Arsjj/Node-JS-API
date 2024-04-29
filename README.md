@@ -44,7 +44,7 @@ pnpm dev
 
 ### Register
 
-- **Endpoint**: `POST /api/register`
+- **Endpoint**: `POST /api/users/register`
 - **Request Body**:
 
   ```json
@@ -58,7 +58,7 @@ pnpm dev
 
 ### Login
 
-- **Endpoint**: `POST /api/login`
+- **Endpoint**: `POST /api/users/login`
 - **Request Body**:
 
   ```json
@@ -70,13 +70,13 @@ pnpm dev
 
 ### Info
 
-- **Endpoint**: `POST /api/info`
+- **Endpoint**: `POST /api/users/info`
 - **Request Headers**:
 
   ```json
   {
     'Content-Type': 'application/json;charset=utf-8',
-    Authorization: "Bearer JWT",
+    Authorization: "Bearer <JWT>",
    
   }
 - **Reponse**: User object with a email and id
