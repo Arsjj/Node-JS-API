@@ -10,7 +10,7 @@ export class ConfigService implements IConfigService {
   constructor(@inject(TYPES.ILogger) private logger: ILogger) {
     const result: DotenvConfigOutput = config();
     if (result.error) {
-      this.logger.error("Can't read file or it's existing");
+      this.logger.error("Can't read file");
     } else {
       this.logger.log("Downloaded");
       this.config = result.parsed as DotenvParseOutput;
